@@ -1,10 +1,10 @@
 ---
-title: Wrangler's unstable_startWorker()
+title: Deprecated unstable_startWorker()
 pcx_content_type: concept
 sidebar:
-  order: 17
+  order: 18
 head: []
-description: Write integration tests using Wrangler's `unstable_startWorker()` API
+description: Review the deprecated unstable_startWorker API and migrate integration tests to createTestHarness.
 products:
   - workers
 ---
@@ -12,15 +12,11 @@ products:
 import { Render } from "~/components";
 import { LinkButton } from "@astrojs/starlight/components";
 
-:::note
-For most users, Cloudflare recommends using the Workers Vitest integration. If you have been using `unstable_dev()`, refer to the [Migrate from `unstable_dev()` guide](/workers/testing/vitest-integration/migration-guides/migrate-from-unstable-dev/).
-:::
-
 :::caution
-`unstable_startWorker()` is an experimental API subject to breaking changes.
+`unstable_startWorker()` is deprecated. Cloudflare recommends using the [`createTestHarness()`](/workers/testing/test-harness/) API, which provides a harness specifically designed for integration testing.
 :::
 
-If you do not want to use Vitest, consider using [Wrangler's `unstable_startWorker()` API](/workers/wrangler/api/#unstable_startworker). This API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. Compared to using [Miniflare directly for testing](/workers/testing/miniflare/writing-tests/), you can pass in a Wrangler configuration file, and it will automatically load the configuration for you.
+Wrangler's [`unstable_startWorker()`](/workers/wrangler/api/#unstable_startworker) API exposes the internals of Wrangler's dev server, and allows you to customise how it runs. Compared to using [Miniflare directly for testing](/workers/testing/miniflare/writing-tests/), you can pass in a Wrangler configuration file, and it will automatically load the configuration for you.
 
 This example uses `node:test`, but should apply to any testing framework:
 
